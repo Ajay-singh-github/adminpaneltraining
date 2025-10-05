@@ -7,17 +7,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function Main() {
     return (<div>
-        <Header />
-        <Sidebar />
-
 
         <Router>
-            <Routes>
-                <Route path="/category" element={<Category />} />
-                <Route path="/subcategory" element={<Subcategory/>} />
-            </Routes>
+            <Header />
+            <Sidebar />
+
+            <div className="h-[calc(100%-95px)] w-[85%] bg-stone-300 absolute top-[13%] left-[15%]">
+                <Routes>
+                    <Route path="/category" element={<Category />} />
+                    <Route path="/subcategory" element={<Subcategory />} />
+                </Routes>
+            </div>
         </Router>
-    </div>)
+
+
+    </div >)
 }
 
 export default Main;
