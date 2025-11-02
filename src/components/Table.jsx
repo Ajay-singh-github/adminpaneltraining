@@ -1,8 +1,8 @@
 
 import MaterialTable from '@material-table/core';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-const Table = () => {
+import Edit from '@material-ui/icons/Edit';
+const Table = ({setIsAddCategory}) => {
     return (
         // <table>
         //     <tr><th>S.No</th><th>Category Name</th><th>Description</th><th>Image</th><th>Action</th></tr>
@@ -15,13 +15,19 @@ const Table = () => {
                     { title: 'Category', field: 'category' },
                     { title: 'Description', field: 'description' },
                     { title: 'Image', field: 'image' },
-                    
+
                 ]}
                 data={[
                     { category: 'Mehmet', description: 'Baran', image: 'image' },
-                    { category: 'Zerya Betül', description: 'Baran', image: 'image'  },
+                    { category: 'Zerya Betül', description: 'Baran', image: 'image' },
                 ]}
                 actions={[
+                    {
+                        icon: 'add',
+                        tooltip: 'Add User',
+                        isFreeAction: true,
+                        onClick: (event) => setIsAddCategory(true)
+                    },
                     {
                         icon: 'save',
                         tooltip: 'Save User',

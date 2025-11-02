@@ -22,6 +22,7 @@ const VisuallyHiddenInput = styled('input')({
 });
 export default function Category() {
     const [imagename, setImageName] = useState('')
+    const [isaddcategory, setIsAddCategory] = useState(false)
 
     const handlePicture = (e) => {
         if (e.target.files[0].name === "nitesh2.jpg") {
@@ -57,38 +58,38 @@ export default function Category() {
     console.log(`../assets/${imagename}`)
     return (
         <>
-           {/* form section category */}
-            {/* <div className="h-[100%] w-[100%] flex justify-center items-center">
+            {/* form section category */}
+            <div className={`h-[100%] ${isaddcategory==true?"flex":"hidden"} w-[100%]  justify-center items-center`}>
                 <div className="bg-neutral-100 h-[70%] w-[50%] rounded-2xl gap-5 flex flex-col justify-center items-center" >
-                <TextField id="outlined-basic" label="Enter Category" variant="outlined" className='w-[70%]' />
-                <TextField id="outlined-basic" label="Enter Description" variant="outlined" className='w-[70%]' />
-                <Button
-                    className='w-[70%]'
-                    component="label"
-                    role={undefined}
-                    variant="contained"
-                    tabIndex={-1}
-                    startIcon={<CloudUploadIcon />}
-                >
-                    Upload files
-                    <VisuallyHiddenInput
-                        type="file"
-                        onChange={handlePicture}
-                    />
-                </Button>
-                {imagename.length <= 1 ? "" :
-                    <div className='flex gap-2'>
-                        <img width={70} className='rounded cursor-pointer' height={70} src={imagename} /> <DeleteIcon onClick={() => handleImageRemove()} className='cursor-pointer' />
-                    </div>
-                }
+                    <TextField id="outlined-basic" label="Enter Category" variant="outlined" className='w-[70%]' />
+                    <TextField id="outlined-basic" label="Enter Description" variant="outlined" className='w-[70%]' />
+                    <Button
+                        className='w-[70%]'
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                    >
+                        Upload files
+                        <VisuallyHiddenInput
+                            type="file"
+                            onChange={handlePicture}
+                        />
+                    </Button>
+                    {imagename.length <= 1 ? "" :
+                        <div className='flex gap-2'>
+                            <img width={70} className='rounded cursor-pointer' height={70} src={imagename} /> <DeleteIcon onClick={() => handleImageRemove()} className='cursor-pointer' />
+                        </div>
+                    }
 
-                <Button variant="outlined" onClick={() => handleSubmitCategory()}>Add Category</Button>
+                    <Button variant="outlined" onClick={() => handleSubmitCategory()}>Add Category</Button>
+                </div>
             </div>
-            </div> */}
 
             {/* table section */}
-            <div className='h-[100%] w-[100%]'>
-                <Table />
+            <div className={`h-[100%] ${isaddcategory==true?"hidden":"flex"} w-[100%]`}>
+                <Table setIsAddCategory={setIsAddCategory}/>
             </div>
 
         </>
